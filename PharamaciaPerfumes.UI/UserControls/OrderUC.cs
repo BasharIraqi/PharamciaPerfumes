@@ -237,7 +237,7 @@ namespace PharamaciaPerfumes.UI
 
         private void btnShow_Click(object sender, EventArgs e)
         {
-            using (var db=new PharamaciaPerfumesContext())
+            using (var db= new PharamaciaPerfumesContext())
             {
                 var find = db.Orders.Find(int.Parse(txtOrderId.Text));
 

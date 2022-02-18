@@ -7,7 +7,7 @@ using Users;
 
 namespace PharamaciaEntities
 {
-    public class Customer
+    public class Customer 
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
@@ -18,5 +18,6 @@ namespace PharamaciaEntities
         public string Email { get; set; }
         public int CreditCardNumber { get; set; }
         public User User { get; set; }
+
     }
 }

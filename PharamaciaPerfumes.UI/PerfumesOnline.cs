@@ -19,21 +19,24 @@ namespace PharamaciaPerfumes.UI
         {
             txtPassword.Clear();
         }
+        public static User saveUser=User.GetUser();
 
         private void btnSign_Click(object sender, EventArgs e)
         {
-            using(var db=new PharamaciaPerfumesContext())
+            saveUser.UserName = txtUserName.Text;
+            saveUser.Password = txtPassword.Text;
+            using(var db= new PharamaciaPerfumesContext())
             {
                var users=db.Users.ToList();
 
-                if (users.Exists(user => user.UserName == txtUserName.Text && user.Password == txtPassword.Text && user.UserName.Contains("cus")))
+                if (users.Exists(user => user.UserName == txtUserName.Text && user.Password == txtPassword.Text && user.AccessType()=="customer"))
                 {
                     OrderUC orderUC = new OrderUC();
                     orderUC.Dock= DockStyle.Fill;
                     this.Controls.Clear();
                     this.Controls.Add(orderUC);
                 }
-                else if (users.Exists(user => user.UserName == txtUserName.Text && user.Password == txtPassword.Text && user.UserName.Contains("man")))
+                else if (users.Exists(user => user.UserName == txtUserName.Text && user.Password == txtPassword.Text && (user.AccessType()=="manager" || user.AccessType()=="director")))
                 {
                     EmployeesUC employeesUC = new EmployeesUC();
                     employeesUC.Dock= DockStyle.Fill;
@@ -44,7 +47,6 @@ namespace PharamaciaPerfumes.UI
                 {
                     MessageBox.Show("Wrong UserName or Password");
                 }
-
             }
         }
     }

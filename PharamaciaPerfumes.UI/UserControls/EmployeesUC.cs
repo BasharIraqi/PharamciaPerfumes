@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PharamaciaPerfumes.UI.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,17 @@ namespace PharamaciaPerfumes.UI
         public EmployeesUC()
         {
             InitializeComponent();
+            
+            if(PerfumesOnline.saveUser.AccessType()=="manager")
+            {
+                btnCustomer.Enabled= true;
+                btnOrders.Enabled= false;
+            }
+            else if (PerfumesOnline.saveUser.AccessType() =="director")
+            {
+                btnCustomer.Enabled = true;
+                btnOrders.Enabled = true;
+            }
         }
 
         private void btnCustomer_Click(object sender, EventArgs e)

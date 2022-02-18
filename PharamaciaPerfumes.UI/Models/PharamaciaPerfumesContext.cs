@@ -9,7 +9,6 @@ namespace PharamaciaPerfumes.UI.Models
 {
     public partial class PharamaciaPerfumesContext : DbContext
     {
-        
         public PharamaciaPerfumesContext()
         {
         }
