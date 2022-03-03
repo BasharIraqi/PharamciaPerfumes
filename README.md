@@ -2,6 +2,11 @@ The project is about online perfumes shop managment, in this shop customers can 
 that they made.
 On the other side we have managers that can see to every customer orders with all information but cant access to orders for security reasons the only one that can access to all
 things is the director how can do anything.
+in the login process there is three type users one for customers that begin with the name "cus" after that some number and if the user and the password are correct then they go
+to the user control for orders to add or delete or update or show.
+the socend type of user is the mananger the user name begin with "man" and number if the user name and the password are correct they can see only spesific customer with his order
+and spesfic order products.
+the last and big user is the one user for the director that acesses to everything he can see orders and customers and connect with username "dirBoss".
 In the solution i make three project one for UI ,second for Entities that have all the classes and the interface , three a diffrent project for the users.
 In PharamaciaEntities i have four classes Employees,Customers,Orders,Products.
 In PharamaciaPerfumesUI i Have the models that  have the dbcontext and i have migaration folder with all migaration and user control folder with all three users control one for 
