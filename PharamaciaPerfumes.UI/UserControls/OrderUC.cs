@@ -1,5 +1,4 @@
 ﻿using PharamaciaEntities;
-using PharamaciaPerfumes.UI.Models;
 using System.Data;
 
 namespace PharamaciaPerfumes.UI

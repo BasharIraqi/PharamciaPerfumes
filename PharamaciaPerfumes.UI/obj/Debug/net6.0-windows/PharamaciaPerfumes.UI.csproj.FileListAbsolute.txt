@@ -59,3 +59,4 @@ C:\Users\saba\source\repos\PharamaciaPerfumes\PharamaciaPerfumes.UI\obj\Debug\ne
 C:\Users\saba\source\repos\PharamaciaPerfumes\PharamaciaPerfumes.UI\obj\Debug\net6.0-windows\PharamaciaPerfumes.UI.OrderUC.resources
 C:\Users\saba\source\repos\PharamaciaPerfumes\PharamaciaPerfumes.UI\obj\Debug\net6.0-windows\PharamaciaPerfumes.UI.EmployeesUC.resources
 C:\Users\saba\source\repos\PharamaciaPerfumes\PharamaciaPerfumes.UI\obj\Debug\net6.0-windows\PharamaciaPerfumes.UI.CustomersUC.resources
+C:\Users\saba\source\repos\PharamaciaPerfumes\PharamaciaPerfumes.UI\obj\Debug\net6.0-windows\PharamaciaPerfumes.UI.UserControls.SignUpUC.resources

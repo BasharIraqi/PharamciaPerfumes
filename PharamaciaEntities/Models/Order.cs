@@ -1,6 +1,6 @@
 ﻿namespace PharamaciaEntities
 {
-    public class Order
+    public partial class Order
     {
         public int Id { get; set; }
         public Customer Customer { get; set; }

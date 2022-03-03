@@ -2,9 +2,9 @@
 
 #nullable disable
 
-namespace PharamaciaPerfumes.UI.Migrations
+namespace PharamaciaEntities.Migrations
 {
-    public partial class LastMigration : Migration
+    public partial class AddRelationships : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

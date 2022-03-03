@@ -13,5 +13,8 @@
     <Compile Update="PerfumesOnline.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="UserControls\SignUpUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

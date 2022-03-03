@@ -1,8 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PharamaciaEntities;
 using Users;
 
-namespace PharamaciaPerfumes.UI.Models
+namespace PharamaciaEntities
 {
     public partial class PharamaciaPerfumesContext : DbContext
     {
@@ -26,26 +25,20 @@ namespace PharamaciaPerfumes.UI.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
             OnModelCreatingPartial(modelBuilder);
 
-            modelBuilder.Entity<User>().HasKey(k=>new {k.UserName,k.Password});
-            modelBuilder.Entity<Employee>().HasOne(e => e.User);
+            modelBuilder.Entity<User>().HasKey(k => new { k.UserName, k.Password });
             modelBuilder.Entity<Order>().HasOne(o => o.Customer).WithMany(c => c.Orders);
             modelBuilder.Entity<Order>().HasMany(o => o.Products);
-            modelBuilder.Entity<Customer>().HasOne(c => c.User);
-
-      
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 
-        public DbSet<Customer> Customers { get; set; }
-        public DbSet<Employee> Employees { get; set; }
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<Product> Products { get; set; }
-        public DbSet<User> Users { get; set; }
-
+        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<User> Users { get; set; }
 
     }
 }

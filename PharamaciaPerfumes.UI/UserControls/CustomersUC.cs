@@ -1,4 +1,5 @@
-﻿using PharamaciaPerfumes.UI.Models;
+﻿using PharamaciaEntities;
+using PharamaciaEntities.Repositories;
 using System.Data;
 
 namespace PharamaciaPerfumes.UI
@@ -26,8 +27,13 @@ namespace PharamaciaPerfumes.UI
             {
                 var find = db.Customers.Find(int.Parse(txtId.Text));
 
-                var orders = db.Orders.Where(w => w.CustomerId == find.Id).Select(s => new { s.Id, s.CustomerId, s.PreparationDate, s.ResieveDate, s.PaymentValue, s.NumberOfProducts, s.NumberOfPackages }).ToList();
-                dgvOrder.DataSource = orders;
+                if (find != null)
+                {
+
+                    var orders = db.Orders.Where(w => w.CustomerId == find.Id).Select(s => new { s.Id, s.CustomerId, s.PreparationDate, s.ResieveDate, s.PaymentValue, s.NumberOfProducts, s.NumberOfPackages }).ToList();
+                    dgvOrder.DataSource = orders;
+                }
+                else MessageBox.Show("Wrong customer id or not found try again");
             }
         }
 
@@ -42,9 +48,14 @@ namespace PharamaciaPerfumes.UI
             {
                 var find = db.Orders.Find(int.Parse(txtorderid.Text));
 
+                if(find != null)
+                {
                 var products = db.Products.Where(w => w.OrderId == find.Id).Select(s => new { s.Id, s.Name, s.Stock, s.Price }).ToList();
 
                 dgvProducts.DataSource = products;
+
+                }
+                else MessageBox.Show("Wrong order id or not found try again");
             }
         }
     }

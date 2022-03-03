@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace PharamaciaPerfumes.UI.Migrations
+namespace PharamaciaEntities.Migrations
 {
     public partial class newPropertys : Migration
     {

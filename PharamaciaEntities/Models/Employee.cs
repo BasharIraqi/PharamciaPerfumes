@@ -2,7 +2,7 @@
 
 namespace PharamaciaEntities
 {
-    public class Employee
+    public partial class Employee
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
@@ -16,7 +16,6 @@ namespace PharamaciaEntities
         public JobRanks JobRank { get; set; }
         public int Seniority { get; set; }
         public int PaymentPerHour { get; set; }
-        public User User { get; set; }
     }
 
     public enum JobRanks

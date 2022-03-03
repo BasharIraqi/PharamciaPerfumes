@@ -33,6 +33,7 @@
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.lblLogo = new System.Windows.Forms.Label();
+            this.btnSignUp = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnSign
@@ -77,6 +78,17 @@
             this.lblLogo.TabIndex = 3;
             this.lblLogo.Text = "PharamaciaPerfumes";
             // 
+            // btnSignUp
+            // 
+            this.btnSignUp.BackColor = System.Drawing.Color.Lavender;
+            this.btnSignUp.Location = new System.Drawing.Point(736, 354);
+            this.btnSignUp.Name = "btnSignUp";
+            this.btnSignUp.Size = new System.Drawing.Size(85, 36);
+            this.btnSignUp.TabIndex = 4;
+            this.btnSignUp.Text = "Sign Up";
+            this.btnSignUp.UseVisualStyleBackColor = false;
+            this.btnSignUp.Click += new System.EventHandler(this.btnSignUp_Click);
+            // 
             // PerfumesOnline
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -84,6 +96,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1527, 638);
+            this.Controls.Add(this.btnSignUp);
             this.Controls.Add(this.lblLogo);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUserName);
@@ -101,5 +114,6 @@
         private TextBox txtUserName;
         private TextBox txtPassword;
         private Label lblLogo;
+        private Button btnSignUp;
     }
 }
