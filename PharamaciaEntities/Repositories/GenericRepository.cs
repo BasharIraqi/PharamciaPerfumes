@@ -1,42 +1,54 @@
 ﻿using PharamaciaEntities.Interfaces;
-using System.Linq.Expressions;
 
 namespace PharamaciaEntities.Repositories
 {
-        public class GenericRepository<T> : IGenericRepository<T> where T : class
+    public class GenericRepository<T> : IDisposable,IGenericRepository<T> where T : class
+    {
+        private  PharamaciaPerfumesContext _context;
+
+        public GenericRepository()
         {
-            protected readonly PharamaciaPerfumesContext _context;
-            public GenericRepository(PharamaciaPerfumesContext context)
-            {
-                _context = context;
-            }
-            public void Add(T entity)
-            {
-                _context.Set<T>().Add(entity);
-            }
-            public void AddRange(IEnumerable<T> entities)
-            {
-                _context.Set<T>().AddRange(entities);
-            }
-            public IEnumerable<T> Find(Expression<Func<T, bool>> expression)
-            {
-                return _context.Set<T>().Where(expression);
-            }
-            public IEnumerable<T> GetAll()
-            {
-                return _context.Set<T>().ToList();
-            }
-            public T GetById(int id)
-            {
-                return _context.Set<T>().Find(id);
-            }
-            public void Remove(T entity)
-            {
-                _context.Set<T>().Remove(entity);
-            }
-            public void RemoveRange(IEnumerable<T> entities)
-            {
-                _context.Set<T>().RemoveRange(entities);
-            }
+            _context=new PharamaciaPerfumesContext();
         }
+
+        public void Add(T Entity)
+        {
+           _context.Set<T>().Add(Entity);
+        }
+
+        public void Delete(T entity)
+        {
+            _context.Set<T>().Remove(entity);
+        }
+
+        public void Dispose()
+        {
+            _context.Dispose();
+        }
+
+        public IEnumerable<T> GetAll()
+        {
+           return _context.Set<T>().ToList();
+        }
+
+        public T GetById(int id)
+        {
+            return _context.Set<T>().Find(id);
+        }
+
+        public T GetT(T entity)
+        {
+            return _context.Set<T>().Find(entity);
+        }
+
+        public void Save()
+        {
+            _context.SaveChanges();
+        }
+
+        public void Update(T entity)
+        {
+            _context.Set<T>().Update(entity);
+        }
+    }
 }

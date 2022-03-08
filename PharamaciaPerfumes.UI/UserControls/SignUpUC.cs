@@ -1,10 +1,12 @@
-﻿using PharamaciaEntities;
+﻿using PharamaciaEntities.Repositories;
 using Users;
 
 namespace PharamaciaPerfumes.UI.UserControls
 {
     public partial class SignUpUC : UserControl
     {
+        GenericRepository<User> userRepo=new GenericRepository<User>();
+       
         static object objlock=new object();
         static SignUpUC instance;
 
@@ -27,16 +29,13 @@ namespace PharamaciaPerfumes.UI.UserControls
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            using (var db = new PharamaciaPerfumesContext())
-            {
-                var newUser = new User();
-                newUser.UserName = txtUserName.Text;
-                newUser.Password = txtPassword.Text;
-                db.Users.Add(newUser);
-                db.SaveChanges();
-                MessageBox.Show("Your new user saved successfully");
-            }
-            
+            var newUser = new User();
+            newUser.UserName = txtUserName.Text;
+            newUser.Password = txtPassword.Text;
+            userRepo.Add(newUser);
+            userRepo.Save();
+            MessageBox.Show("Your new user saved successfully");
+
             PerfumesOnline.ActiveForm.Hide();
             PerfumesOnline perfumesOnline = new PerfumesOnline();
             perfumesOnline.ShowDialog();   

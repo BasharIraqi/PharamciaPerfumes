@@ -6,14 +6,15 @@ namespace PharamaciaPerfumes.UI
 {
     public partial class CustomersUC : UserControl
     {
+        GenericRepository<Customer> customerRepo =new GenericRepository<Customer>();
+        GenericRepository<Order> orderRepo= new GenericRepository<Order>();
+        GenericRepository<Product> productRepo= new GenericRepository<Product>();
         public CustomersUC()
         {
             InitializeComponent();
-            using (var db = new PharamaciaPerfumesContext())
-            {
-                var show = db.Customers.Select(s => new { s.Id, s.FirstName, s.LastName, s.PhoneNumber, s.Email, s.Address, s.CreditCardNumber }).ToList();
-                dgvShow.DataSource = show;
-            }
+
+           var get= customerRepo.GetAll();
+            dgvShow.DataSource = get;
         }
 
         private void txtId_Click(object sender, EventArgs e)
@@ -23,18 +24,15 @@ namespace PharamaciaPerfumes.UI
 
         private void btnShow_Click(object sender, EventArgs e)
         {
-            using (var db = new PharamaciaPerfumesContext())
+            var find= customerRepo.GetById(int.Parse(txtId.Text));
+            if (find != null)
             {
-                var find = db.Customers.Find(int.Parse(txtId.Text));
-
-                if (find != null)
-                {
-
-                    var orders = db.Orders.Where(w => w.CustomerId == find.Id).Select(s => new { s.Id, s.CustomerId, s.PreparationDate, s.ResieveDate, s.PaymentValue, s.NumberOfProducts, s.NumberOfPackages }).ToList();
-                    dgvOrder.DataSource = orders;
-                }
-                else MessageBox.Show("Wrong customer id or not found try again");
+                var orders=orderRepo.GetAll().Where(w => w.CustomerId == find.Id).Select(s => new { s.Id, s.CustomerId, s.PreparationDate, s.ResieveDate, s.PaymentValue,
+                    s.NumberOfProducts, s.NumberOfPackages }).ToList();
+                dgvOrder.DataSource = orders;
             }
+            else 
+                MessageBox.Show("Wrong customer id or not found try again");
         }
 
         private void txtorderid_Click(object sender, EventArgs e)
@@ -44,19 +42,17 @@ namespace PharamaciaPerfumes.UI
 
         private void btnorder_Click(object sender, EventArgs e)
         {
-            using (var db = new PharamaciaPerfumesContext())
-            {
-                var find = db.Orders.Find(int.Parse(txtorderid.Text));
+            var find = orderRepo.GetById(int.Parse(txtorderid.Text));
 
-                if(find != null)
-                {
-                var products = db.Products.Where(w => w.OrderId == find.Id).Select(s => new { s.Id, s.Name, s.Stock, s.Price }).ToList();
+            if (find != null)
+            {
+                var products = productRepo.GetAll().Where(w => w.OrderId == find.Id).Select(s => new { s.Id, s.Name, s.Stock, s.Price }).ToList();
 
                 dgvProducts.DataSource = products;
 
-                }
-                else MessageBox.Show("Wrong order id or not found try again");
             }
+            else 
+                MessageBox.Show("Wrong order id or not found try again");
         }
     }
 }
