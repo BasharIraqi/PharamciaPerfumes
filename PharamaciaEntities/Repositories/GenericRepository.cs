@@ -36,11 +36,6 @@ namespace PharamaciaEntities.Repositories
             return _context.Set<T>().Find(id);
         }
 
-        public T GetT(T entity)
-        {
-            return _context.Set<T>().Find(entity);
-        }
-
         public void Save()
         {
             _context.SaveChanges();
