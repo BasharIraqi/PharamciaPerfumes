@@ -32,9 +32,19 @@ namespace PharamaciaPerfumes.UI.UserControls
             var newUser = new User();
             newUser.UserName = txtUserName.Text;
             newUser.Password = txtPassword.Text;
+            var findUser = userRepo.GetAll().Where(w => w.UserName == txtUserName.Text && w.Password == txtPassword.Text);
+
+            if(findUser==null)
+            {
             userRepo.Add(newUser);
             userRepo.Save();
             MessageBox.Show("Your new user saved successfully");
+            }
+            else
+            {
+                MessageBox.Show("User Already Exist Try Another one");
+            }
+
 
             PerfumesOnline.ActiveForm.Hide();
             PerfumesOnline perfumesOnline = new PerfumesOnline();
@@ -44,6 +54,7 @@ namespace PharamaciaPerfumes.UI.UserControls
         private void txtUserName_Click(object sender, EventArgs e)
         {
             txtUserName.Clear();
+            txtUserName.Text = "cus ";
         }
 
         private void txtPassword_Click(object sender, EventArgs e)

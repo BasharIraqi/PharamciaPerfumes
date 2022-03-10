@@ -32,6 +32,8 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.btnConfirm = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblLogo
@@ -76,12 +78,33 @@
             this.btnConfirm.UseVisualStyleBackColor = false;
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(696, 103);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 15);
+            this.label1.TabIndex = 8;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.SystemColors.Info;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(831, 138);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(365, 21);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "*inter username that begin with \"cus\" and numbers";
+            // 
             // SignUpUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::PharamaciaPerfumes.UI.Properties.Resources.Best_perfume_for_women_2020;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblLogo);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUserName);
@@ -99,5 +122,7 @@
         private TextBox txtPassword;
         private TextBox txtUserName;
         private Button btnConfirm;
+        private Label label1;
+        private Label label2;
     }
 }
