@@ -30,15 +30,25 @@ namespace PharamaciaPerfumes.UI
 
                 var users=userRepo.GetAll().ToList();
 
-            if (users.ToList().Exists(user => user.UserName == txtUserName.Text && user.Password == txtPassword.Text && (user.AccessType() == "customer")))
+            if (users.ToList().Exists(user => user.UserName == txtUserName.Text && user.Password == txtPassword.Text && user.AccessType=="general"))
             {
+                saveUser.AccessType = "general";
                 OrderUC orderUC = new OrderUC();
                 orderUC.Dock = DockStyle.Fill;
                 this.Controls.Clear();
                 this.Controls.Add(orderUC);
             }
-            else if (users.ToList().Exists(user => user.UserName == txtUserName.Text && user.Password == txtPassword.Text && (user.AccessType() == "manager" || user.AccessType() == "director")))
+            else if (users.ToList().Exists(user => user.UserName == txtUserName.Text && user.Password == txtPassword.Text && user.AccessType == "manager"))
             {
+                saveUser.AccessType = "manager";
+                EmployeesUC employeesUC = new EmployeesUC();
+                employeesUC.Dock = DockStyle.Fill;
+                this.Controls.Clear();
+                this.Controls.Add(employeesUC);
+            }
+            else if (users.ToList().Exists(user => user.UserName == txtUserName.Text && user.Password == txtPassword.Text &&  user.AccessType == "director"))
+            {
+                saveUser.AccessType = "director";
                 EmployeesUC employeesUC = new EmployeesUC();
                 employeesUC.Dock = DockStyle.Fill;
                 this.Controls.Clear();
@@ -46,7 +56,9 @@ namespace PharamaciaPerfumes.UI
             }
             else
             {
-                MessageBox.Show("Wrong UserName or Password And if you is a new user sign up");
+                MessageBox.Show("Wrong UserName or Password And if you are a new user sign up");
+                txtUserName.Text = "User Name";
+                txtPassword.Text = "Password";
             }
         }
 

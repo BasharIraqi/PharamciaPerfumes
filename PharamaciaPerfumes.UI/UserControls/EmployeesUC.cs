@@ -6,12 +6,12 @@
         {
             InitializeComponent();
             
-            if(PerfumesOnline.saveUser.AccessType()=="manager")
+            if(PerfumesOnline.saveUser.AccessType=="manager")
             {
-                btnCustomer.Enabled= true;
-                btnOrders.Enabled= false;
+                btnCustomer.Enabled = true;
+                btnOrders.Enabled=false;
             }
-            else if (PerfumesOnline.saveUser.AccessType() =="director")
+            else if (PerfumesOnline.saveUser.AccessType=="director")
             {
                 btnCustomer.Enabled = true;
                 btnOrders.Enabled = true;

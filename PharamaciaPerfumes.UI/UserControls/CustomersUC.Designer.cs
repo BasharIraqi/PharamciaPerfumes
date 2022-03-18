@@ -136,9 +136,9 @@
             this.label4.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label4.Location = new System.Drawing.Point(1005, 17);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(168, 28);
+            this.label4.Size = new System.Drawing.Size(160, 28);
             this.label4.TabIndex = 16;
-            this.label4.Text = "Customers Orders";
+            this.label4.Text = "Customer Orders";
             // 
             // label3
             // 

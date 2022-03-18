@@ -30,36 +30,49 @@ namespace PharamaciaPerfumes.UI.UserControls
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             var newUser = new User();
-            newUser.UserName = txtUserName.Text;
-            newUser.Password = txtPassword.Text;
-            var findUser = userRepo.GetAll().Where(w => w.UserName == txtUserName.Text && w.Password == txtPassword.Text);
-
-            if(findUser==null)
+            if (txtUserName.Text.Length > 10 || txtPassword.Text.Length > 10)
             {
-            userRepo.Add(newUser);
-            userRepo.Save();
-            MessageBox.Show("Your new user saved successfully");
+                MessageBox.Show("Your username or password too long");
+                txtUserName.Text = "User Name";
+                txtPassword.Text = "Password";
             }
             else
             {
-                MessageBox.Show("User Already Exist Try Another one");
+                newUser.UserName = txtUserName.Text;
+                newUser.Password = txtPassword.Text;
+                newUser.AccessType = "general";
+
+
+                var findUser = userRepo.GetAll().FirstOrDefault(w => w.UserName == txtUserName.Text && w.Password == txtPassword.Text);
+
+                if (findUser != null)
+                {
+                    MessageBox.Show("User Already Exist Try Another one");
+                }
+                else
+                {
+                    userRepo.Add(newUser);
+                    userRepo.Save();
+                    MessageBox.Show("Your new user saved successfully");
+                }
+
+
+
+                PerfumesOnline.ActiveForm.Hide();
+                PerfumesOnline perfumesOnline = new PerfumesOnline();
+                perfumesOnline.ShowDialog();
             }
-
-
-            PerfumesOnline.ActiveForm.Hide();
-            PerfumesOnline perfumesOnline = new PerfumesOnline();
-            perfumesOnline.ShowDialog();   
         }
 
         private void txtUserName_Click(object sender, EventArgs e)
         {
             txtUserName.Clear();
-            txtUserName.Text = "cus ";
         }
 
         private void txtPassword_Click(object sender, EventArgs e)
         {
             txtPassword.Clear();
         }
+
     }
 }

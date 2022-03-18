@@ -1,16 +1,23 @@
-The project is about online perfumes shop managment, in this shop customers can access to make online orders or delete the order or update there order or see what a specific order
-that they made.
-On the other side we have managers that can see to every customer orders with all information but cant access to orders for security reasons the only one that can access to all
-things is the director how can do anything.
-in the login process there is three type users one for customers that begin with the name "cus" after that some number and if the user and the password are correct then they go
-to the user control for orders to add or delete or update or show.
-the socend type of user is the mananger the user name begin with "man" and number if the user name and the password are correct they can see only spesific customer with his order
-and spesfic order products.
-the last and big user is the one user for the director that acesses to everything he can see orders and customers and connect with username "dirBoss".
-In the solution i make three project one for UI ,second for Entities that have all the classes and the interface , three a diffrent project for the users.
-In PharamaciaEntities i have four classes Employees,Customers,Orders,Products.
-In PharamaciaPerfumesUI i Have the models that  have the dbcontext and i have migaration folder with all migaration and user control folder with all three users control one for 
-customers that can add or delete or update or show order, the second for employees that we have two access types on for manager and the second for director,manager can see
-specifec customer order and cant access to orders to add,delete,update,show like director.
-in every add or delete or update or show or user access we connect to a sql database that call Pharamacia Perfumes and in every connect we update what realative.
-in the database we have five tables one for the migaration that save every migaration we did, second for employees,third for orders,fourth for users,fifth for products.
+#Pharamacia Perfumes Online Project
+my project is divided to three pieces one for entities another one for UI and the last for the users, the project about an online store for selling perfumes and make orders for customers.
+
+#### *Pharamacia Perfumes Entities:
+there is the models folder that have the customer,employees,product,order classes.
+then i have the nigeration folder that include all the migration that i have done.
+and also i have interfaces that have gneric repository interface.
+the last one is the repsitory folder that have the generic repository that extend from the generic interface.
+
+in this project i work with repository pattern to connect with the data base, I made generic interface that
+have all the methods that i need to connect with database to pick up the information that i need.
+
+#### *Pharamacia Perfumes UI:
+In this project i made all the user controls that i need, at the begging i use the main form as a loggin page if the username begin with __cus__ and the password is correct the order user control open there i have four option add,delete,update,show order that the customer can see and made.
+
+if the username begin with __man__ and the password is correct the employee user control will open and i have there two buttons one for orders and one for customers but the manager only can see customers and there orders and cannot do anything with orders.
+
+At the end i have the big user that begin with __dir__ for the director the big boss on the store and if the password is correct the employee user control will open and the director have two options orders and customers, in customer user control i have grid view of all the customers and i can select specific customer by his id and then i can choose specific order from his orders then i can choose specific order by her id and will show the order products.
+
+The last user control that i have is the sign up user control that if i have new users and i want to add to the database to add one the user name must begin with __cus__ and then some numbers in the password you can choose any thing, and to add manager the user name must begin with __man__ and some numbers if it all correct and the user does not exist in the databse it will be added succesfully.
+
+#### *Users:
+In this project i have the user class and interface for checking users accessbility that if the user name begin with __cus__ it is customer and if begin with __man__ it is a manager and if the username begin with __dir__ it is for the director the big user in the project.

@@ -30,6 +30,10 @@ namespace PharamaciaEntities
             modelBuilder.Entity<User>().HasKey(k => new { k.UserName, k.Password });
             modelBuilder.Entity<Order>().HasOne(o => o.Customer).WithMany(c => c.Orders);
             modelBuilder.Entity<Order>().HasMany(o => o.Products);
+            modelBuilder.Entity<User>().HasData(new User { UserName = "man1", Password = "mmm111",AccessType="manager"});
+            modelBuilder.Entity<User>().HasData(new User { UserName = "man2", Password = "mmm222",AccessType="manager" });
+            modelBuilder.Entity<User>().HasData(new User { UserName = "man3", Password = "mmm333",AccessType="manager" });
+            modelBuilder.Entity<User>().HasData(new User { UserName = "dirBoss", Password = "db123",AccessType="director"});
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
